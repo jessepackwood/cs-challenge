@@ -1,0 +1,17 @@
+{
+  "name": "campSpot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha",
+    "eslint": "./node_modules/eslint/bin/eslint.js ./*.js"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.12.1",
+    "eslint-config-google": "^0.12.0",
+    "mocha": "^5.2.0",
+    "moment": "^2.24.0"
+  }
+}
