@@ -23,7 +23,7 @@ describe('Scheduler test', () => {
      };
 
     const expected = [];
-    expect(checkAvailability(mockDataWithSearchInside)).to.deep.equal(expected);
+    expect(checkAvailability(mockData)).to.deep.equal(expected);
   })
 
   it('should return no campsites if reservation dates fall inside search dates', () => {
@@ -42,7 +42,7 @@ describe('Scheduler test', () => {
      };
 
     const expected = [];
-    expect(checkAvailability(mockDataWithSearchOutside)).to.deep.equal(expected);
+    expect(checkAvailability(mockData)).to.deep.equal(expected);
   })
 
   it('should return no campsites if search dates fall in between a reservation', () => {
@@ -59,9 +59,9 @@ describe('Scheduler test', () => {
         {"campsiteId": 3, "startDate": "2018-06-01", "endDate": "2018-06-21"}, 
         ]
      };
-     
+
      const expected = [];
-     expect(checkAvailability(mockDataWithSearchBetween)).to.deep.equal(expected);
+     expect(checkAvailability(mockData)).to.deep.equal(expected);
   })
 
   it('should return no campsites if search dates match a reservation', () => {
@@ -101,7 +101,7 @@ describe('Scheduler test', () => {
      };
 
      const expected = [];
-     expect(checkAvailability(mockDataWithStartOrEndMatch)).to.deep.equal(expected);
+     expect(checkAvailability(mockData)).to.deep.equal(expected);
   })
 
   it('should return available campsites', () => {
