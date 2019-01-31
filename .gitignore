@@ -31,3 +31,5 @@ node_modules
 
 #API information
 .api.js
+
+yarn-error.log

@@ -22,12 +22,12 @@ I assumed that campsites would not be available if the start dates for the searc
 
 ## Set Up
 
-Run 'npm install' from the root directory
+Run `npm install` from the root directory
 
 ## Execute
 
-Run 'node index.js' to execute functions
+Run `node index.js` to execute functions
 
 ## Testing
 
-Run 'npm test' to run all tests with Mocha
+Run `npm test` to run all tests with Mocha
