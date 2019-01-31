@@ -8,7 +8,7 @@ describe('Scheduler test', () => {
   let mockData;
 
   it('should return no campsites if search dates fall inside all reservations', () => {
-    const mockDataWithSearchInside = {
+    mockData = {
       search: { startDate: "2018-06-02", endDate: "2018-06-04"},
       campsites: [
         {"id": 1, "name": "Jackson Hole"},
@@ -20,14 +20,14 @@ describe('Scheduler test', () => {
         {"campsiteId": 2, "startDate": "2018-06-03", "endDate": "2018-06-10"},
         {"campsiteId": 3, "startDate": "2018-06-01", "endDate": "2018-06-06"}, 
         ]
-     }
+     };
 
     const expected = [];
-    expect(checkAvailability(mockDataWithSearchInside)).to.deep.equal(expected)
+    expect(checkAvailability(mockDataWithSearchInside)).to.deep.equal(expected);
   })
 
   it('should return no campsites if reservation dates fall inside search dates', () => {
-    const mockDataWithSearchOutside = {
+    mockData = {
       search: { startDate: "2018-06-01", endDate: "2018-06-10"},
       campsites: [
         {"id": 1, "name": "Jackson Hole"},
@@ -39,14 +39,14 @@ describe('Scheduler test', () => {
         {"campsiteId": 2, "startDate": "2018-06-06", "endDate": "2018-06-09"},
         {"campsiteId": 3, "startDate": "2018-06-03", "endDate": "2018-06-06"}, 
         ]
-     }
+     };
 
     const expected = [];
-    expect(checkAvailability(mockDataWithSearchOutside)).to.deep.equal(expected)
+    expect(checkAvailability(mockDataWithSearchOutside)).to.deep.equal(expected);
   })
 
   it('should return no campsites if search dates fall in between a reservation', () => {
-      const mockDataWithSearchBetween = {
+    mockData = {
       search: { startDate: "2018-06-05", endDate: "2018-06-07"},
       campsites: [
         {"id": 1, "name": "Jackson Hole"},
@@ -58,14 +58,15 @@ describe('Scheduler test', () => {
         {"campsiteId": 2, "startDate": "2018-06-03", "endDate": "2018-06-09"},
         {"campsiteId": 3, "startDate": "2018-06-01", "endDate": "2018-06-21"}, 
         ]
-     }
+     };
+     
      const expected = [];
-     expect(checkAvailability(mockDataWithSearchBetween)).to.deep.equal(expected)
+     expect(checkAvailability(mockDataWithSearchBetween)).to.deep.equal(expected);
   })
 
   it('should return no campsites if search dates match a reservation', () => {
 
-    const mockDataWithSearchMatch = {
+    mockData = {
       search: { startDate: "2018-06-05", endDate: "2018-06-07"},
       campsites: [
         {"id": 1, "name": "Jackson Hole"},
@@ -77,10 +78,10 @@ describe('Scheduler test', () => {
         {"campsiteId": 2, "startDate": "2018-06-05", "endDate": "2018-06-07"},
         {"campsiteId": 3, "startDate": "2018-06-05", "endDate": "2018-06-07"},
         ]
-     }
+     };
 
      const expected = [];
-     expect(checkAvailability(mockDataWithSearchMatch)).to.deep.equal(expected)
+     expect(checkAvailability(mockData)).to.deep.equal(expected);
   })  
 
   it('should return no campsite if search start or end date match a reservation start or end date', () => {
@@ -97,15 +98,15 @@ describe('Scheduler test', () => {
         {"campsiteId": 2, "startDate": "2018-06-07", "endDate": "2018-06-09"},
         {"campsiteId": 3, "startDate": "2018-06-04", "endDate": "2018-06-07"},
         ]
-     }
+     };
 
      const expected = [];
-     expect(checkAvailability(mockDataWithStartOrEndMatch)).to.deep.equal(expected)
+     expect(checkAvailability(mockDataWithStartOrEndMatch)).to.deep.equal(expected);
   })
 
   it('should return available campsites', () => {
 
-      mockData = {
+    mockData = {
       search: { startDate: "2018-06-04", endDate: "2018-06-06"},
       campsites: [
         {"id": 1, "name": "Jackson Hole"},
@@ -122,8 +123,9 @@ describe('Scheduler test', () => {
         {"campsiteId": 3, "startDate": "2018-06-01", "endDate": "2018-06-02"},
         {"campsiteId": 3, "startDate": "2018-06-08", "endDate": "2018-06-09"},
         {"campsiteId": 4, "startDate": "2018-06-07", "endDate": "2018-06-10"} ]
-     }
+     };
+
     const expected = [ 'Aspen', 'The Bob', 'Moab'];
-    expect(checkAvailability(mockData)).to.deep.equal(expected)
+    expect(checkAvailability(mockData)).to.deep.equal(expected);
   })
 })
